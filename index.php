@@ -4,6 +4,28 @@
   <title>F11 to full screen</title>
   <meta charset="UTF-8">
   <meta name="robots" content="noindex, nofollow">
+  <?php
+
+  // PHP Is only used in this sharing block, it makes posting in Slack fun.
+  $url =  "//{$_SERVER['HTTP_HOST']}{$_SERVER['REQUEST_URI']}";
+  $escaped_url = htmlspecialchars( $url, ENT_QUOTES, 'UTF-8' );
+  $parts = parse_url($url);
+  parse_str($parts['query'], $query);
+
+  ?>
+  <!-— facebook open graph tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="<?php echo $escaped_url; ?>">
+    <meta name="og:title" property="og:title" content="<?php echo $query['title']; ?>">
+    <meta property="og:description" content="<?php echo $query['alt']; ?>">
+    <meta name="og:image" property="og:image" content="">
+  <!-— twitter card tags additive with the og: tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:domain" value="<?php echo $escaped_url; ?>">
+    <meta name="twitter:title" value="<?php echo $query['title']; ?>">
+    <meta name="twitter:description" value="<?php echo $query['alt']; ?>">
+    <meta name="twitter:image" content="<?php echo $query['img']; ?>">
+    <meta name="twitter:url" value="<?php echo $escaped_url; ?>">
   <style>
     /* use !important on this helper lest the override monster attach! */
     .a11y {
@@ -102,7 +124,7 @@
       <p>Giffy is an <a href="https://github.com/arleym/giffer" rel="no">open source</a> animated gif presentation tool. Configure the options form to begin. When Giffy is playing hit the escape key, or modify the URL query string to make alterations.
       <p>Please be considerate of those with sensativity toward animation and flashing images.
       <!-- <p>It is the intention of the authors that you pronounce the word gif however you please and allow others the same courtesy. -->
-      <p><a href="index.html?title=Esc+to+Configure&img=http%3A%2F%2Frle.me%2Fx%2Ffreesoftware.gif&css=h1+%7Btext-shadow%3Anone+%21important%3Bfont-family%3A+%22Comic+Sans+MS%22%2C+%22Comic+Sans%22%2C+cursive%3Bcolor%3A%23c00%3Bfont-size%3A10vw%7D&alt=A+friendly+fellow+announcing+that+this+is+free+software+in+a+flippant+sort+of+way&fullscreen=tile#">Example ›</a></p>
+      <p><a href="index.php?title=Esc+to+Configure&img=http%3A%2F%2Frle.me%2Fx%2Ffreesoftware.gif&css=h1+%7Btext-shadow%3Anone+%21important%3Bfont-family%3A+%22Comic+Sans+MS%22%2C+%22Comic+Sans%22%2C+cursive%3Bcolor%3A%23c00%3Bfont-size%3A10vw%7D&alt=A+friendly+fellow+announcing+that+this+is+free+software+in+a+flippant+sort+of+way&fullscreen=tile#">Example ›</a></p>
     </div>
 
     <form class="box float-left" action="#">
